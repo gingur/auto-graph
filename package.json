@@ -1,0 +1,89 @@
+{
+  "name": "@gingur/auto-graph",
+  "version": "0.1.0",
+  "description": "Promise-first dependency graph runner using fluent generics for type chaining",
+  "keywords": [
+    "async",
+    "auto",
+    "workflow",
+    "pipeline",
+    "dependency-graph",
+    "promises",
+    "fluent"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "build:watch": "tsdown --watch",
+    "types": "tsc --noEmit",
+    "unit": "tsx --test test/unit/**/*.test.ts",
+    "unit:watch": "tsx --test --watch test/unit/**/*.test.ts",
+    "unit:coverage": "tsx --test --experimental-test-coverage --test-coverage-exclude='test/**' test/unit/**/*.test.ts",
+    "integration": "tsx --test test/integration/**/*.test.ts",
+    "integration:watch": "tsx --test --watch test/integration/**/*.test.ts",
+    "integration:coverage": "tsx --test --experimental-test-coverage --test-coverage-exclude='test/**' test/integration/**/*.test.ts",
+    "coverage": "npm run unit:coverage && npm run integration:coverage",
+    "test": "npm run types && npm run unit && npm run integration",
+    "cicd-test": "npm run types && npm run coverage",
+    "lint:prettier": "prettier --write .",
+    "lint:eslint": "eslint --fix .",
+    "lint": "npm run lint:prettier && npm run lint:eslint",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish",
+    "prepare": "husky",
+    "prepublishOnly": "npm run test && npm run build"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.7",
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^22.19.1",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.6",
+    "prettier": "^3.6.2",
+    "tsdown": "^0.16.4",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.4"
+  },
+  "author": "Troy Rhinehart",
+  "license": "MIT",
+  "homepage": "https://github.com/gingur/auto-graph#README",
+  "bugs": {
+    "url": "https://github.com/gingur/auto-graph/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gingur/auto-graph.git"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "lint-staged": {
+    "*.{ts,js,mjs,mts}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  }
+}
