@@ -1,7 +1,7 @@
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
 
-import { AutoGraph } from '../../dist/index.mjs';
+import { AutoGraph } from '../../src';
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
