@@ -16,6 +16,7 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    environment: dev-private
 
     steps:
       - name: Checkout code
@@ -27,16 +28,6 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
-          scope: '@gingur'
-
-      - name: Configure npm for @gingur
-        run: |
-          echo "@gingur:registry=https://registry.npmjs.org/" >> ~/.npmrc
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
-          echo "//registry.npmjs.org/:username=gingur" >> ~/.npmrc
-          npm config set provenance true
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Install dependencies
         run: npm ci
@@ -54,5 +45,4 @@ jobs:
           title: 'chore: version packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: 'true'
