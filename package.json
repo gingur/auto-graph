@@ -1,6 +1,6 @@
 {
   "name": "@gingur/auto-graph",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Promise-first dependency graph runner using fluent generics for type chaining",
   "keywords": [
     "async",
