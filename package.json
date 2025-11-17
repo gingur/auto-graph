@@ -15,6 +15,9 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "sideEffects": false,
+  "files": [
+    "./dist"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -41,7 +44,7 @@
     "lint": "npm run lint:prettier && npm run lint:eslint",
     "changeset": "changeset",
     "changeset:version": "changeset version",
-    "changeset:publish": "changeset publish --access public",
+    "changeset:publish": "npm run build && changeset publish --access public",
     "prepare": "husky",
     "prepublishOnly": "npm run test && npm run build"
   },
