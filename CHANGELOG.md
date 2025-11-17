@@ -1,5 +1,11 @@
 # @gingur/auto-graph
 
+## 0.3.0
+
+### Minor Changes
+
+- d2020c4: Fix broken export via build process
+
 ## 0.2.0
 
 ### Minor Changes
