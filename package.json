@@ -17,6 +17,7 @@
   "sideEffects": false,
   "exports": {
     ".": {
+      "types": "./dist/index.d.mts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
@@ -40,7 +41,7 @@
     "lint": "npm run lint:prettier && npm run lint:eslint",
     "changeset": "changeset",
     "changeset:version": "changeset version",
-    "changeset:publish": "changeset publish",
+    "changeset:publish": "changeset publish --access public",
     "prepare": "husky",
     "prepublishOnly": "npm run test && npm run build"
   },
@@ -71,7 +72,7 @@
     "url": "git+https://github.com/gingur/auto-graph.git"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=20"
   },
   "publishConfig": {
     "access": "public",
