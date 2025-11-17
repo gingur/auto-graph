@@ -1,4 +1,4 @@
-name: Publish to NPM
+name: Publish
 
 on:
   push:
@@ -10,13 +10,13 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 permissions:
   contents: write
   pull-requests: write
+  packages: write
   id-token: write
 
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    environment: dev-private
 
     steps:
       - name: Checkout code
@@ -44,6 +44,6 @@ jobs:
           commit: 'chore: version packages'
           title: 'chore: version packages'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_PROVENANCE: 'true'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
